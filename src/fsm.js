@@ -89,12 +89,8 @@ class FSM {
      * @returns {Boolean}
      */
     undo() {
-        if (this.historyCount > 0) {
-            this.fsmHistory.push(this.currState);
-            this.historyCount++;
-            console.log("!!!!!!!" + this.fsmHistory);
-            this.currState = this.fsmHistory[this.historyCount - 2];
-            this.historyCount--;
+        if (this.fsmHistory.length > 0) {
+            this.currState = this.fsmHistory[this.fsmHistory.length - 1];
             return true;
         }
         else return false;
